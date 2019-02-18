@@ -1,19 +1,26 @@
 {
   "private": true,
   "version": "1.0.0",
-  "description": "Deck created with mdx-deck",
+  "description": "A talk performed at Codemotion Rome 2019 and Codemotion Amsterdam 2019.",
   "scripts": {
-    "start": "mdx-deck deck.mdx",
-    "build": "mdx-deck build deck.mdx",
-    "pdf": "mdx-deck pdf deck.mdx",
-    "image": "mdx-deck screenshot deck.mdx",
+    "start": "mdx-deck deck.js",
+    "build": "mdx-deck build deck.js",
+    "pdf": "mdx-deck pdf deck.js",
+    "image": "mdx-deck screenshot deck.js",
     "help": "mdx-deck"
   },
   "keywords": [],
-  "author": "Brent Jackson",
+  "author": "IceOnFire <antony.mistretta@gmail.com>(https://www.ingloriouscoderz.it)",
   "license": "MIT",
   "devDependencies": {
-    "mdx-deck": "^1.6.7"
+    "@babel/plugin-proposal-class-properties": "^7.3.3",
+    "@babel/standalone": "^7.3.3",
+    "mdx-deck": "^1.6.7",
+    "mdx-deck-live-code": "^1.0.1",
+    "raw-loader": "^1.0.0"
   },
-  "name": "refactoring-into-react-hooks"
+  "name": "refactoring-into-react-hooks",
+  "dependencies": {
+    "recompose": "^0.30.0"
+  }
 }
