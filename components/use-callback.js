@@ -1,5 +1,3 @@
-/* useCallback */
-
 function useToggle(defaultOn) {
   const [on, setOn] = useState(defaultOn)
   const toggle = useCallback(() => setOn(!on), [on])

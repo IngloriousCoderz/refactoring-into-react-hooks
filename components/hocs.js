@@ -1,5 +1,3 @@
-/* HOCs */
-
 const enhance = compose(
   withState('text', 'setText', 'Hello world!'),
   withHandlers({

@@ -1,5 +1,3 @@
-/* Context */
-
 const ThemeContext = createContext()
 const TitleContext = createContext()
 

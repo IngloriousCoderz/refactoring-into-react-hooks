@@ -1,7 +1,5 @@
-/* useReducer */
-
 function Counter() {
-  const { count, decrement, handleChange, increment } = useCounter()
+  const { count, increment, decrement, handleChange } = useCounter()
   return (
     <>
       <h1>{count}</h1>
@@ -16,24 +14,11 @@ function Counter() {
 
 function useCounter() {
   const [count, dispatch] = useReducer(counter, 0)
-
-  function decrement(step) {
-    dispatch({ type: 'DECREMENT', payload: step })
-  }
-
-  function setValue(value) {
-    dispatch({ type: 'SET_VALUE', payload: value })
-  }
-
-  function increment(step) {
-    dispatch({ type: 'INCREMENT', payload: step })
-  }
-
-  function handleChange(event) {
-    setValue(parseInt(event.target.value))
-  }
-
-  return { count, decrement, handleChange, increment }
+  const increment = () => dispatch({ type: 'INCREMENT' })
+  const decrement = () => dispatch({ type: 'DECREMENT' })
+  const setValue = value => dispatch({ type: 'SET_VALUE', payload: value })
+  const handleChange = event => setValue(parseInt(event.target.value))
+  return { count, increment, decrement, handleChange }
 }
 
 render(Counter)

@@ -1,17 +1,4 @@
-/* useEffect */
-
 function MyComponent() {
-  const { count, toggle } = useTimer()
-
-  return (
-    <>
-      <h1>{count}</h1>
-      <button onClick={toggle}>Play/Pause</button>
-    </>
-  )
-}
-
-function useTimer() {
   const [count, setCount] = useState(0)
   const [play, setPlay] = useState(false)
 
@@ -39,7 +26,12 @@ function useTimer() {
     return () => stop()
   }, [play])
 
-  return { count, toggle }
+  return (
+    <>
+      <h1>{count}</h1>
+      <button onClick={toggle}>{play ? 'Pause' : 'Play'}</button>
+    </>
+  )
 }
 
 render(MyComponent)

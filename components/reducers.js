@@ -1,5 +1,3 @@
-/* Reducers */
-
 function counter(state = 0, action) {
   const { type, payload } = action
   switch (type) {
@@ -17,10 +15,10 @@ function counter(state = 0, action) {
 const enhance = compose(
   withReducer('count', 'dispatch', counter, 0),
   withHandlers({
+    increment: ({ dispatch }) => () => dispatch({ type: 'INCREMENT' }),
     decrement: ({ dispatch }) => () => dispatch({ type: 'DECREMENT' }),
     setValue: ({ dispatch }) => value =>
       dispatch({ type: 'SET_VALUE', payload: value }),
-    increment: ({ dispatch }) => () => dispatch({ type: 'INCREMENT' }),
   }),
   withHandlers({
     handleChange: ({ setValue }) => event =>
@@ -28,7 +26,7 @@ const enhance = compose(
   }),
 )
 
-const Counter = enhance(({ count, decrement, handleChange, increment }) => (
+const Counter = enhance(({ count, increment, decrement, handleChange }) => (
   <>
     <h1>{count}</h1>
     <div>

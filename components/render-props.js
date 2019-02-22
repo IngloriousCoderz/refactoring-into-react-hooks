@@ -1,5 +1,3 @@
-/* render props */
-
 class Toggler extends Component {
   state = { on: this.props.defaultOn }
 

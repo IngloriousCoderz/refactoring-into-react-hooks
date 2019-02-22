@@ -1,5 +1,3 @@
-/* Lifecycle */
-
 class MyComponent extends Component {
   state = { count: 0, play: false }
 
@@ -37,11 +35,11 @@ class MyComponent extends Component {
   }
 
   render() {
-    const { count } = this.state
+    const { count, play } = this.state
     return (
       <>
         <h1>{count}</h1>
-        <button onClick={this.toggle}>Play/Pause</button>
+        <button onClick={this.toggle}>{play ? 'Pause' : 'Play'}</button>
       </>
     )
   }

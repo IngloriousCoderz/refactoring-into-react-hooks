@@ -1,5 +1,3 @@
-/* useRef */
-
 function MyComponent() {
   const myRef = useRef()
   const handleClick = () => myRef.current.focus()

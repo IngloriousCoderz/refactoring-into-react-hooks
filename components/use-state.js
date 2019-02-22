@@ -1,5 +1,3 @@
-/* useState */
-
 function MyComponent() {
   const [text, setText] = useState('Hello world!')
 

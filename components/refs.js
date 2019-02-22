@@ -1,5 +1,3 @@
-/* Refs */
-
 class MyComponent extends Component {
   myRef = React.createRef()
 

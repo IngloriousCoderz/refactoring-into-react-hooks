@@ -1,5 +1,3 @@
-/* hooks composition */
-
 const MyComponent = memo(function MyComponent() {
   const text = useText()
   return (

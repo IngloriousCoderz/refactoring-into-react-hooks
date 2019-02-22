@@ -1,5 +1,3 @@
-/* useReducer + useContext */
-
 function counter(state = 0, action) {
   const { type, payload } = action
   switch (type) {
@@ -16,24 +14,11 @@ function counter(state = 0, action) {
 
 function useCounter() {
   const [count, dispatch] = useReducer(counter, 0)
-
-  function decrement(step) {
-    dispatch({ type: 'DECREMENT', payload: step })
-  }
-
-  function setValue(value) {
-    dispatch({ type: 'SET_VALUE', payload: value })
-  }
-
-  function increment(step) {
-    dispatch({ type: 'INCREMENT', payload: step })
-  }
-
-  function handleChange(event) {
-    setValue(parseInt(event.target.value))
-  }
-
-  return { count, decrement, handleChange, increment }
+  const increment = () => dispatch({ type: 'INCREMENT' })
+  const decrement = () => dispatch({ type: 'DECREMENT' })
+  const setValue = value => dispatch({ type: 'SET_VALUE', payload: value })
+  const handleChange = event => setValue(parseInt(event.target.value))
+  return { count, increment, decrement, handleChange }
 }
 
 const CounterContext = createContext()
@@ -49,7 +34,7 @@ function Parent() {
 }
 
 function Child() {
-  const { count, decrement, handleChange, increment } = useContext(
+  const { count, increment, decrement, handleChange } = useContext(
     CounterContext,
   )
   return (

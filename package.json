@@ -19,7 +19,8 @@
     "mdx-deck": "^1.6.7",
     "mdx-deck-live-code": "^1.0.1",
     "raw-loader": "^1.0.0",
-    "style-loader": "^0.23.1"
+    "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2"
   },
   "name": "refactoring-into-react-hooks",
   "dependencies": {

@@ -1,5 +1,3 @@
-/* State */
-
 class MyComponent extends Component {
   state = { text: 'Hello world!' }
 

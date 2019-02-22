@@ -1,5 +1,3 @@
-/* Redux */
-
 function counter(state = 0, action) {
   const { type, payload } = action
   switch (type) {
@@ -19,20 +17,16 @@ const CounterContext = createContext()
 class Parent extends Component {
   dispatch = action =>
     this.setState(({ count }) => ({ count: counter(count, action) }))
-
-  decrement = () => this.dispatch({ type: 'DECREMENT' })
-
-  setValue = value => this.dispatch({ type: 'SET_VALUE', payload: value })
-
   increment = () => this.dispatch({ type: 'INCREMENT' })
-
+  decrement = () => this.dispatch({ type: 'DECREMENT' })
+  setValue = value => this.dispatch({ type: 'SET_VALUE', payload: value })
   handleChange = event => this.setValue(parseInt(event.target.value))
 
   state = {
     count: 0,
+    increment: this.increment,
     decrement: this.decrement,
     handleChange: this.handleChange,
-    increment: this.increment,
   }
 
   render() {
@@ -45,7 +39,7 @@ class Parent extends Component {
 }
 
 function Child() {
-  const { count, decrement, handleChange, increment } = useContext(
+  const { count, increment, decrement, handleChange } = useContext(
     CounterContext,
   )
   return (
