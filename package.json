@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "A talk performed at Codemotion Rome 2019 and Codemotion Amsterdam 2019.",
   "scripts": {
-    "start": "mdx-deck deck.js",
-    "build": "mdx-deck build deck.js",
-    "pdf": "mdx-deck pdf deck.js",
-    "image": "mdx-deck screenshot deck.js",
+    "start": "mdx-deck deck.mdx",
+    "build": "mdx-deck build deck.mdx --no-html && cp -r assets dist",
+    "pdf": "mdx-deck pdf deck.mdx",
+    "image": "mdx-deck screenshot deck.mdx",
     "help": "mdx-deck"
   },
   "keywords": [],
@@ -15,9 +15,11 @@
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.3.3",
     "@babel/standalone": "^7.3.3",
+    "css-loader": "^2.1.0",
     "mdx-deck": "^1.6.7",
     "mdx-deck-live-code": "^1.0.1",
-    "raw-loader": "^1.0.0"
+    "raw-loader": "^1.0.0",
+    "style-loader": "^0.23.1"
   },
   "name": "refactoring-into-react-hooks",
   "dependencies": {

@@ -1,3 +1,5 @@
+/* Reselect */
+
 function fibonacci(num) {
   if (num === 1 || num === 2) return num
   return fibonacci(num - 1) + fibonacci(num - 2)
@@ -12,7 +14,7 @@ function Fibonacci() {
 
   return (
     <>
-      <p>{fib}</p>
+      <h1>{fib}</h1>
       <input
         type="number"
         value={num}

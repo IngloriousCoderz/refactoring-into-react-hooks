@@ -1,3 +1,5 @@
+/* Refs */
+
 class MyComponent extends Component {
   myRef = React.createRef()
 
@@ -6,8 +8,8 @@ class MyComponent extends Component {
   render() {
     return (
       <>
-        <button onClick={this.handleClick}>Focus!</button>
         <input defaultValue="Hello world!" ref={this.myRef} />
+        <button onClick={this.handleClick}>Focus!</button>
       </>
     )
   }

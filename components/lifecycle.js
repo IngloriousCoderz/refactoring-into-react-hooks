@@ -1,11 +1,14 @@
+/* Lifecycle */
+
 class MyComponent extends Component {
   state = { count: 0, play: false }
 
-  start = () =>
-    (this.interval = setInterval(
+  start = () => {
+    this.interval = setInterval(
       () => this.setState(({ count }) => ({ count: count + 1 })),
       1000,
-    ))
+    )
+  }
 
   stop = () => clearInterval(this.interval)
 
@@ -37,7 +40,7 @@ class MyComponent extends Component {
     const { count } = this.state
     return (
       <>
-        <p>{count}</p>
+        <h1>{count}</h1>
         <button onClick={this.toggle}>Play/Pause</button>
       </>
     )

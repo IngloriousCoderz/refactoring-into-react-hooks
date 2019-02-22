@@ -1,3 +1,5 @@
+/* State */
+
 class MyComponent extends Component {
   state = { text: 'Hello world!' }
 
@@ -9,8 +11,8 @@ class MyComponent extends Component {
     const { text } = this.state
     return (
       <>
+        <h1>{text}</h1>
         <input value={text} onChange={this.handleChange} />
-        <p>{text}</p>
       </>
     )
   }

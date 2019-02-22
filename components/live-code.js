@@ -2,7 +2,17 @@ import React from 'react'
 import { LiveCode } from 'mdx-deck-live-code'
 import { transform } from '@babel/standalone'
 
-function MyLiveCode({ title, size = 'large', code }) {
+import '../assets/styles/style.css'
+import '../assets/styles/prism-onedark.css'
+
+const memo = Component =>
+  class extends React.PureComponent {
+    render() {
+      return <Component {...this.props} />
+    }
+  }
+
+function MyLiveCode({ title, size = 'fullscreen', code }) {
   return (
     <LiveCode
       title={title}
@@ -10,7 +20,12 @@ function MyLiveCode({ title, size = 'large', code }) {
       code={code}
       providerProps={{
         noInline: true,
-        scope: { ...require('react'), ...require('recompose') },
+        mountStylesheet: false,
+        scope: {
+          ...require('react'),
+          ...require('recompose'),
+          memo,
+        },
         transformCode: input => {
           try {
             return transform(input, {

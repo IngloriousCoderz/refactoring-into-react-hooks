@@ -1,3 +1,5 @@
+/* Redux */
+
 function counter(state = 0, action) {
   const { type, payload } = action
   switch (type) {
@@ -14,43 +16,22 @@ function counter(state = 0, action) {
 
 const CounterContext = createContext()
 
-function Child() {
-  const { count, decrement, handleChange, increment } = useContext(
-    CounterContext,
-  )
-  return (
-    <>
-      <p>{count}</p>
-      <button onClick={decrement}>-1</button>
-      <input type="number" value={count} onChange={handleChange} />
-      <button onClick={increment}>+1</button>
-    </>
-  )
-}
-
 class Parent extends Component {
-  decrement = () =>
-    this.setState(({ count }) => ({
-      count: counter(count, { type: 'DECREMENT' }),
-    }))
+  dispatch = action =>
+    this.setState(({ count }) => ({ count: counter(count, action) }))
 
-  setValue = value =>
-    this.setState(({ count }) => ({
-      count: counter(count, {
-        type: 'SET_VALUE',
-        payload: value,
-      }),
-    }))
+  decrement = () => this.dispatch({ type: 'DECREMENT' })
 
-  increment = () =>
-    this.setState(({ count }) => ({
-      count: counter(count, { type: 'INCREMENT' }),
-    }))
+  setValue = value => this.dispatch({ type: 'SET_VALUE', payload: value })
+
+  increment = () => this.dispatch({ type: 'INCREMENT' })
+
+  handleChange = event => this.setValue(parseInt(event.target.value))
 
   state = {
     count: 0,
     decrement: this.decrement,
-    handleChange: event => this.setValue(parseInt(event.target.value)),
+    handleChange: this.handleChange,
     increment: this.increment,
   }
 
@@ -61,6 +42,22 @@ class Parent extends Component {
       </CounterContext.Provider>
     )
   }
+}
+
+function Child() {
+  const { count, decrement, handleChange, increment } = useContext(
+    CounterContext,
+  )
+  return (
+    <>
+      <h1>{count}</h1>
+      <div>
+        <button onClick={decrement}>-1</button>
+        <input type="number" value={count} onChange={handleChange} />
+        <button onClick={increment}>+1</button>
+      </div>
+    </>
+  )
 }
 
 render(Parent)

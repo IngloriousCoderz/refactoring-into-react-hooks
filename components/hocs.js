@@ -1,3 +1,5 @@
+/* HOCs */
+
 const enhance = compose(
   withState('text', 'setText', 'Hello world!'),
   withHandlers({
@@ -8,8 +10,8 @@ const enhance = compose(
 
 const MyComponent = enhance(({ text, onChange }) => (
   <>
+    <h1>{text}</h1>
     <input value={text} onChange={onChange} />
-    <p>{text}</p>
   </>
 ))
 

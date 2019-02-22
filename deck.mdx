@@ -1,0 +1,325 @@
+import { Head, Image } from 'mdx-deck'
+
+import LiveCode from './components/live-code'
+
+export { default as theme } from './theme'
+
+<Head>
+  <title>Refactoring Into React Hooks</title>
+</Head>
+
+<!--
+![Inglorious Coderz](https://www.ingloriouscoderz.it/static/assets//logos/extended.png)
+
+presents:
+-->
+
+# Refactoring Into React Hooks
+
+[Matteo Antony Mistretta](https://www.linkedin.com/in/antonymistretta/)
+
+[Inglorious Coderz](https://www.ingloriouscoderz.it)
+
+---
+
+## Why
+
+- They are [stable](https://reactjs.org/blog/2019/02/06/react-v16.8.0.html)
+- They [separate](https://medium.com/@dan_abramov/making-sense-of-react-hooks-fdbde8803889) stateful logic
+- They [flatten](https://itnext.io/why-reacts-hooks-api-is-a-game-changer-8731c2b0a8c) our component hierarchy
+- They allow us to go fully [functional](https://hackernoon.com/react-stateless-functional-components-nine-wins-you-might-have-overlooked-997b0d933dbc)
+
+---
+
+## Separation Of Concerns
+
+<video
+  controls={true}
+  poster="https://pbs.twimg.com/tweet_video_thumb/DqsCilOU0AAoS7P.jpg"
+  src="https://video.twimg.com/tweet_video/DqsCilOU0AAoS7P.mp4"
+  type="video/mp4"
+  style={{
+    width: '50vw',
+    height: '66vh',
+  }}
+/>
+
+[Pavel Prichodko's tweet](https://twitter.com/prchdk/status/1056960391543062528)
+
+---
+
+```
+antony@ingloriouscoderz ~> whoami
+```
+
+<div
+  style={{
+    width: '50vw',
+    height: '75vh',
+    margin: '0 auto',
+    background: 'url(./assets/images/website.png)',
+    backgroundSize: '100% auto',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+  }}
+/>
+
+---
+
+<LiveCode title="State" code={require('!raw-loader!./components/state')} />
+
+```notes
+function MyComponent() {
+  const [text, setText] = useState('Hello world!')
+  const handleChange = event => setText(event.target.value)
+  return (
+    <>
+      <h1>{text}</h1>
+      <input value={text} onChange={handleChange} />
+    </>
+  )
+}
+```
+
+---
+
+<LiveCode
+  title="useState"
+  code={require('!raw-loader!./components/use-state')}
+/>
+
+---
+
+<LiveCode title="Refs" code={require('!raw-loader!./components/refs')} />
+
+```notes
+function MyComponent() {
+  const myRef = useRef()
+  const handleClick = () => myRef.current.focus()
+  return (
+    <>
+      <input defaultValue="Hello world!" ref={myRef} />
+      <button onClick={handleClick}>Focus!</button>
+    </>
+  )
+}
+```
+
+---
+
+<LiveCode title="useRef" code={require('!raw-loader!./components/use-ref')} />
+
+---
+
+<LiveCode
+  title="Lifecycle"
+  code={require('!raw-loader!./components/lifecycle')}
+/>
+
+```notes
+function MyComponent() {
+  const { count, toggle } = useTimer()
+
+  return (
+    <>
+      <h1>{count}</h1>
+      <button onClick={toggle}>Play/Pause</button>
+    </>
+  )
+}
+
+function useTimer() {
+  const [count, setCount] = useState(0)
+  const [play, setPlay] = useState(false)
+
+  function toggle() {
+    setPlay(!play)
+  }
+
+  useEffect(() => {
+    let interval = null
+
+    function start() {
+      interval = setInterval(() => setCount(count => count + 1), 1000)
+    }
+
+    function stop() {
+      clearInterval(interval)
+    }
+
+    if (play) {
+      start()
+    } else {
+      stop()
+    }
+
+    return () => stop()
+  }, [play])
+
+  return { count, toggle }
+}
+```
+
+---
+
+<LiveCode
+  title="useEffect"
+  code={require('!raw-loader!./components/use-effect')}
+/>
+
+---
+
+<LiveCode title="HoCs" code={require('!raw-loader!./components/hocs')} />
+
+```notes
+const MyComponent = memo(function MyComponent() {
+  const text = useText()
+  return (
+    <>
+      <h1>{text.value}</h1>
+      <input {...text} />
+    </>
+  )
+})
+
+function useText() {
+  const [text, setText] = useState('Hello world!')
+  const handleChange = event => setText(event.target.value)
+  return { value: text, onChange: handleChange }
+}
+```
+
+---
+
+<LiveCode title="memo" code={require('!raw-loader!./components/memo')} />
+
+---
+
+<LiveCode
+  title="Render props"
+  code={require('!raw-loader!./components/render-props')}
+/>
+
+```notes
+
+```
+
+---
+
+<LiveCode
+  title="useCallback"
+  code={require('!raw-loader!./components/use-callback')}
+/>
+
+---
+
+<LiveCode title="Context" code={require('!raw-loader!./components/context')} />
+
+```notes
+function Child() {
+  const theme = useContext(ThemeContext)
+  const title = useContext(TitleContext)
+  return <h1 style={{ background: theme }}>{title}</h1>
+}
+```
+
+---
+
+<LiveCode
+  title="useContext"
+  code={require('!raw-loader!./components/use-context')}
+/>
+
+---
+
+<LiveCode
+  title="Reducers"
+  code={require('!raw-loader!./components/reducers')}
+/>
+
+```notes
+function Counter() {
+  const { count, decrement, handleChange, increment } = useCounter()
+  return (
+    <>
+      <h1>{count}</h1>
+      <div>
+        <button onClick={decrement}>-1</button>
+        <input type="number" value={count} onChange={handleChange} />
+        <button onClick={increment}>+1</button>
+      </div>
+    </>
+  )
+}
+
+function useCounter() {
+  const [count, dispatch] = useReducer(counter, 0)
+
+  function decrement(step) {
+    dispatch({ type: 'DECREMENT', payload: step })
+  }
+
+  function setValue(value) {
+    dispatch({ type: 'SET_VALUE', payload: value })
+  }
+
+  function increment(step) {
+    dispatch({ type: 'INCREMENT', payload: step })
+  }
+
+  function handleChange(event) {
+    setValue(parseInt(event.target.value))
+  }
+
+  return { count, decrement, handleChange, increment }
+}
+```
+
+---
+
+<LiveCode
+  title="useReducer"
+  code={require('!raw-loader!./components/use-reducer')}
+/>
+
+---
+
+<LiveCode title="Redux" code={require('!raw-loader!./components/redux')} />
+
+```notes
+function useCounter() {
+  const [count, dispatch] = useReducer(counter, 0)
+  const decrement = step => dispatch({ type: 'DECREMENT', payload: step })
+  const setValue = value => dispatch({ type: 'SET_VALUE', payload: value })
+  const increment = step => dispatch({ type: 'INCREMENT', payload: step })
+
+  const handleChange = event => setValue(parseInt(event.target.value))
+
+  return { count, decrement, handleChange, increment }
+}
+
+function Parent() {
+  const counter = useCounter()
+
+  return (
+    <CounterContext.Provider value={counter}>
+      <Child />
+    </CounterContext.Provider>
+  )
+}
+```
+
+---
+
+<LiveCode
+  title="useReducer + useContext"
+  code={require('!raw-loader!./components/use-reducer-and-context')}
+/>
+
+---
+
+# Thank you.
+
+Questions?
+
+[source code](https://github.com/IngloriousCoderz/refactoring-into-react-hooks)

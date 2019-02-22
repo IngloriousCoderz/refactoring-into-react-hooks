@@ -1,4 +1,4 @@
-/* Context */
+/* useContext */
 
 const ThemeContext = createContext()
 const TitleContext = createContext()
@@ -14,15 +14,9 @@ function Parent() {
 }
 
 function Child() {
-  return (
-    <ThemeContext.Consumer>
-      {theme => (
-        <TitleContext.Consumer>
-          {title => <h1 style={{ background: theme }}>{title}</h1>}
-        </TitleContext.Consumer>
-      )}
-    </ThemeContext.Consumer>
-  )
+  const theme = useContext(ThemeContext)
+  const title = useContext(TitleContext)
+  return <h1 style={{ background: theme }}>{title}</h1>
 }
 
 render(Parent)

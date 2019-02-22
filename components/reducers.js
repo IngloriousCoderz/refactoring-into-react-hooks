@@ -1,3 +1,5 @@
+/* Reducers */
+
 function counter(state = 0, action) {
   const { type, payload } = action
   switch (type) {
@@ -28,10 +30,12 @@ const enhance = compose(
 
 const Counter = enhance(({ count, decrement, handleChange, increment }) => (
   <>
-    <p>{count}</p>
-    <button onClick={decrement}>-1</button>
-    <input type="number" value={count} onChange={handleChange} />
-    <button onClick={increment}>+1</button>
+    <h1>{count}</h1>
+    <div>
+      <button onClick={decrement}>-1</button>
+      <input type="number" value={count} onChange={handleChange} />
+      <button onClick={increment}>+1</button>
+    </div>
   </>
 ))
 
