@@ -3,7 +3,7 @@ function Counter() {
   return (
     <>
       <h1>{count}</h1>
-      <div>
+      <div className="input-group">
         <button onClick={decrement}>-1</button>
         <input type="number" value={count} onChange={handleChange} />
         <button onClick={increment}>+1</button>

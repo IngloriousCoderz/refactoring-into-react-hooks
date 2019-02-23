@@ -29,7 +29,7 @@ const enhance = compose(
 const Counter = enhance(({ count, increment, decrement, handleChange }) => (
   <>
     <h1>{count}</h1>
-    <div>
+    <div className="input-group">
       <button onClick={decrement}>-1</button>
       <input type="number" value={count} onChange={handleChange} />
       <button onClick={increment}>+1</button>

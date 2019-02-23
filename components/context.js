@@ -1,25 +1,25 @@
+const UserContext = createContext()
 const ThemeContext = createContext()
-const TitleContext = createContext()
 
 function Parent() {
   return (
-    <ThemeContext.Provider value="grey">
-      <TitleContext.Provider value="Hello world!">
+    <UserContext.Provider value="Antony">
+      <ThemeContext.Provider value={{ color: '#e06c75' }}>
         <Child />
-      </TitleContext.Provider>
-    </ThemeContext.Provider>
+      </ThemeContext.Provider>
+    </UserContext.Provider>
   )
 }
 
 function Child() {
   return (
-    <ThemeContext.Consumer>
-      {theme => (
-        <TitleContext.Consumer>
-          {title => <h1 style={{ background: theme }}>{title}</h1>}
-        </TitleContext.Consumer>
+    <UserContext.Consumer>
+      {user => (
+        <ThemeContext.Consumer>
+          {theme => <h1 style={theme}>Hello {user}!</h1>}
+        </ThemeContext.Consumer>
       )}
-    </ThemeContext.Consumer>
+    </UserContext.Consumer>
   )
 }
 

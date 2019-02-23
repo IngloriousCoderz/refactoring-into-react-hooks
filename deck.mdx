@@ -11,12 +11,6 @@ export { default as theme } from './theme'
   <title>Refactoring Into React Hooks</title>
 </Head>
 
-<!--
-![Inglorious Coderz](https://www.ingloriouscoderz.it/static/assets//logos/extended.png)
-
-presents:
--->
-
 # Refactoring Into React Hooks
 
 <Image src="./assets/images/ic.png" width="8rem" height="8rem" />
@@ -49,13 +43,10 @@ presents:
 
 ---
 
-export default Split
-
-```bash
-antony@ingloriouscoderz ~> whoami
-```
-
-<Image src="./assets/images/mobile-website-mockup.png" height="100vh" />
+<div style={{ display: 'flex', alignItems: 'center' }}>
+  <pre className="language-bash">antony@ingloriouscoderz ~> whoami</pre>
+  <Image src="./assets/images/mobile-website-mockup.png" height="100vh" />
+</div>
 
 ---
 
@@ -68,10 +59,10 @@ antony@ingloriouscoderz ~> whoami
 
 ## Let's refactor...
 
-1. [_State_]()
+1. [_State_](#6)
 2. Refs and Instance Attributes
 3. Lifecycle Methods
-4. Higher-Order components
+4. Higher-Order Components
 5. Render Props
 6. Context API
 7. Reducers
@@ -106,9 +97,9 @@ function MyComponent() {
 ## Let's refactor...
 
 1. State
-2. [_Refs and Instance Attributes_]()
+2. [_Refs and Instance Attributes_](#9)
 3. Lifecycle Methods
-4. Higher-Order components
+4. Higher-Order Components
 5. Render Props
 6. Context API
 7. Reducers
@@ -141,8 +132,8 @@ function MyComponent() {
 
 1. State
 2. Refs and Instance Attributes
-3. [_Lifecycle Methods_]()
-4. Higher-Order components
+3. [_Lifecycle Methods_](#12)
+4. Higher-Order Components
 5. Render Props
 6. Context API
 7. Reducers
@@ -207,7 +198,7 @@ function MyComponent() {
 1. State
 2. Refs and Instance Attributes
 3. Lifecycle Methods
-4. [_Higher-Order components_]()
+4. [_Higher-Order Components_](#15)
 5. Render Props
 6. Context API
 7. Reducers
@@ -217,11 +208,10 @@ function MyComponent() {
 
 <Image src="./assets/images/hooks-vs-recompose.png" width="33vw" />
 
----
-
+<!--
 <Image src="./assets/images/andrew-on-recompose.png" height="33vh" />
-
 <Image src="./assets/images/dan-on-recompose.png" height="50vh" />
+-->
 
 ---
 
@@ -260,8 +250,8 @@ function useText() {
 1. State
 2. Refs and Instance Attributes
 3. Lifecycle Methods
-4. Higher-Order components
-5. [_Render Props_]()
+4. Higher-Order Components
+5. [_Render Props_](#20)
 6. Context API
 7. Reducers
 8. Redux
@@ -274,7 +264,20 @@ function useText() {
 />
 
 ```notes
+function useToggle(defaultOn) {
+  const [on, setOn] = useState(defaultOn)
+  const toggle = useCallback(() => setOn(!on), [on])
+  return { on, toggle }
+}
 
+function Child() {
+  const { on, toggle } = useToggle(false)
+  return <button onClick={toggle}>{on ? 'Turn off' : 'Turn on'}</button>
+}
+
+function Parent() {
+  return <Child />
+}
 ```
 
 ---
@@ -291,9 +294,9 @@ function useText() {
 1. State
 2. Refs and Instance Attributes
 3. Lifecycle Methods
-4. Higher-Order components
+4. Higher-Order Components
 5. Render Props
-6. [_Context API_]()
+6. [_Context API_](#23)
 7. Reducers
 8. Redux
 
@@ -303,9 +306,9 @@ function useText() {
 
 ```notes
 function Child() {
+  const user = useContext(UserContext)
   const theme = useContext(ThemeContext)
-  const title = useContext(TitleContext)
-  return <h1 style={{ background: theme }}>{title}</h1>
+  return <h1 style={theme}>Hello {user}!</h1>
 }
 ```
 
@@ -323,10 +326,10 @@ function Child() {
 1. State
 2. Refs and Instance Attributes
 3. Lifecycle Methods
-4. Higher-Order components
+4. Higher-Order Components
 5. Render Props
 6. Context API
-7. [_Reducers_]()
+7. [_Reducers_](#26)
 8. Redux
 
 ---
@@ -375,11 +378,11 @@ function useCounter() {
 1. State
 2. Refs and Instance Attributes
 3. Lifecycle Methods
-4. Higher-Order components
+4. Higher-Order Components
 5. Render Props
 6. Context API
 7. Reducers
-8. [_Redux_]()
+8. [_Redux_](#29)
 
 ---
 

@@ -1,9 +1,10 @@
 import { default as theme } from 'mdx-deck/themes'
-import atomDark from 'react-syntax-highlighter/styles/prism/atom-dark'
+// import atomDark from 'react-syntax-highlighter/styles/prism/atom-dark'
 
 const titleStyle = {
   fontFamily: 'Orbitron',
   fontWeight: 'normal',
+  color: '#98c379',
 }
 
 export default {
