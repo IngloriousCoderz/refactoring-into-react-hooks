@@ -2,8 +2,8 @@ import React from 'react'
 import { LiveCode } from 'mdx-deck-live-code'
 import { transform } from '@babel/standalone'
 
-import '../assets/styles/style.css'
 import '../assets/styles/prism-onedark.css'
+import '../assets/styles/style.css'
 
 const memo = Component =>
   class extends React.PureComponent {
