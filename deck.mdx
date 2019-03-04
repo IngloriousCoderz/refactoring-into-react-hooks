@@ -207,7 +207,7 @@ function MyComponent() {
 ```notes
 Up to now we saw how React hooks allow us to get rid of class components in favor of simple and composable functions. But, if you're like me (or you attended my previous talk titled "React, The Inglorious Way"), you've already looked for some way to achieve the same result before, maybe through higher-order components, and maybe you even stumbled upon Recompose.
 
-Recompose, for those who don't know, is a library of higher-order components created by Andrew Clarke, which is the co-creator of Redux together with Dan Abramov. Recompose already does a great job in composing reusable functions, the only problem with higher-order components is that they create a deeply nested component hierarchy which is difficult to debug.
+Recompose, for those who don't know, is a collection of higher-order components, and a function that composes them together, created by Andrew Clarke, which is the co-creator of Redux together with Dan Abramov. Recompose already does a great job in composing reusable functions, the only problem with higher-order components is that they create a deeply nested component hierarchy which is difficult to debug.
 ```
 
 ---
@@ -225,7 +225,7 @@ Apart from the overwhelming number of likes on my post, another result I obtaine
 <Image src="./assets/images/waiting.jpg" width="33vw" />
 
 ```notes
-That was November. I looked around every other day on the internet for Andrew's article, but never saw one.
+That was November. I surfed every other day on the internet looking for Andrew's article, but never saw one.
 ```
 
 ---
@@ -234,11 +234,11 @@ That was November. I looked around every other day on the internet for Andrew's 
 <Image src="./assets/images/dan-on-recompose.png" height="50vh" />
 
 ```notes
-One thing I found, however, is this excerpt from Recompose's README file. He says that hooks solve all problems addressed by Recompose, so he's not going to maintain the library anymore.
+One thing I found, though, is this excerpt from Recompose's README file, written at the end of October. Here Andrew says that "hooks solve all problems" addressed with Recompose, so he's "discontinuing active maintenance", he's not going to maintain the library anymore.
 
-This triggered a rage of course, which was calmed down by Dan a few days after: Recompose had no new features for two years already, so dicontinuing it won't change anything for the users. Moreover, he says that hooks solve "a large subset" of problems, not all of them. We will see what this means in a while.
+This of course triggered a rage, which was calmed down by Dan a few weeks later: Recompose had no new features for two years already, so dicontinuing it won't change anything for the users. But another interesting part is that he says that hooks solve "a large subset" of problems, not all of them. We will see what this means in a while.
 
-Anyway, since we still hadn't a satisfying reply from the React team, let's find out by ourselves what does entail to refactor from Recompose and higher-order components to hooks.
+Anyway, since we still hadn't a satisfying reply from the React team, let's find out by ourselves what does it mean to refactor from Recompose and higher-order components to hooks.
 ```
 
 ---
