@@ -1,10 +1,11 @@
-import { Head, Appear } from 'mdx-deck'
-import { Split } from 'mdx-deck/layouts'
+import { Head } from 'mdx-deck'
 
+import Header from './components/header'
 import Video from './components/video'
 import Image from './components/image'
 import LiveCode from './components/live-code'
 
+import theme from './theme'
 export { default as theme } from './theme'
 
 <Head>
@@ -13,13 +14,19 @@ export { default as theme } from './theme'
 
 # Refactoring Into React Hooks
 
-<Image src="./assets/images/ic.png" width="8rem" height="8rem" />
+<Image
+  src={`./assets/images/ic_${theme.name}.png`}
+  width="8rem"
+  height="8rem"
+/>
 
 [Matteo Antony Mistretta](https://www.linkedin.com/in/antonymistretta/)
 
 [Inglorious Coderz](https://www.ingloriouscoderz.it)
 
 [@antonymistretta](https://twitter.com/antonymistretta)
+
+<Header />
 
 ---
 

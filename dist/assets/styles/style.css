@@ -12,12 +12,20 @@
 code,
 pre {
   text-align: left;
+  margin: 0;
   padding: 2rem;
 }
 
 .react-live-preview {
-  background: #212831;
-  padding: 2rem;
+  padding: 4rem;
+}
+
+.react-live-preview.dark {
+  background-color: #212831;
+}
+
+.react-live-preview.light {
+  background-color: #f5f5f5;
 }
 
 .react-live-preview + div {

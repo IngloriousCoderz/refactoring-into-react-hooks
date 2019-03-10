@@ -1,17 +1,3 @@
-function counter(state = 0, action) {
-  const { type, payload } = action
-  switch (type) {
-    case 'INCREMENT':
-      return state + 1
-    case 'DECREMENT':
-      return state - 1
-    case 'SET_VALUE':
-      return payload
-    default:
-      return state
-  }
-}
-
 function useCounter() {
   const [count, dispatch] = useReducer(counter, 0)
   const increment = () => dispatch({ type: 'INCREMENT' })
@@ -50,3 +36,17 @@ function Child() {
 }
 
 render(Parent)
+
+function counter(state = 0, action) {
+  const { type, payload } = action
+  switch (type) {
+    case 'INCREMENT':
+      return state + 1
+    case 'DECREMENT':
+      return state - 1
+    case 'SET_VALUE':
+      return payload
+    default:
+      return state
+  }
+}
