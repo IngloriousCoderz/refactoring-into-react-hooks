@@ -1,21 +1,14 @@
 function MyComponent() {
   const [count, setCount] = useState(0)
   const [play, setPlay] = useState(false)
-
-  function toggle() {
-    setPlay(play => !play)
-  }
+  const toggle = () => setPlay(play => !play)
 
   useEffect(() => {
     let interval = null
 
-    function start() {
-      interval = setInterval(() => setCount(count => count + 1), 1000)
-    }
-
-    function stop() {
-      clearInterval(interval)
-    }
+    const start = () =>
+      (interval = setInterval(() => setCount(count => count + 1), 1000))
+    const stop = () => clearInterval(interval)
 
     if (play) {
       start()

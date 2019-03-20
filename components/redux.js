@@ -3,10 +3,12 @@ const CounterContext = createContext()
 class Parent extends Component {
   dispatch = action =>
     this.setState(({ count }) => ({ count: counter(count, action) }))
+
   increment = () => this.dispatch({ type: 'INCREMENT' })
   decrement = () => this.dispatch({ type: 'DECREMENT' })
-  setValue = value => this.dispatch({ type: 'SET_VALUE', payload: value })
-  handleChange = event => this.setValue(parseInt(event.target.value))
+  setCount = value => this.dispatch({ type: 'SET_COUNT', payload: value })
+
+  handleChange = event => this.setCount(parseInt(event.target.value))
 
   state = {
     count: 0,
@@ -49,7 +51,7 @@ function counter(state = 0, action) {
       return state + 1
     case 'DECREMENT':
       return state - 1
-    case 'SET_VALUE':
+    case 'SET_COUNT':
       return payload
     default:
       return state

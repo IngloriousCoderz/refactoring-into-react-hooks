@@ -16,4 +16,4 @@ class MyComponent extends Component {
   }
 }
 
-render(<MyComponent />)
+render(MyComponent)

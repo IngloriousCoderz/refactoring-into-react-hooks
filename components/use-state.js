@@ -1,9 +1,6 @@
 function MyComponent() {
   const [text, setText] = useState('Hello world!')
-
-  function handleChange(event) {
-    setText(event.target.value)
-  }
+  const handleChange = event => setText(event.target.value)
 
   return (
     <>

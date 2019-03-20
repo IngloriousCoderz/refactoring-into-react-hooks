@@ -1,4 +1,4 @@
-const MyComponent = memo(function MyComponent() {
+function MyComponent() {
   const text = useText()
   return (
     <>
@@ -6,7 +6,7 @@ const MyComponent = memo(function MyComponent() {
       <input {...text} />
     </>
   )
-})
+}
 
 function useText() {
   const [text, setText] = useState('Hello world!')
@@ -14,4 +14,4 @@ function useText() {
   return { value: text, onChange: handleChange }
 }
 
-render(MyComponent)
+render(memo(MyComponent))

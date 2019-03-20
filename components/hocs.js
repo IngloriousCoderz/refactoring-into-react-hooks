@@ -6,11 +6,13 @@ const enhance = compose(
   pure,
 )
 
-const MyComponent = enhance(({ text, onChange }) => (
-  <>
-    <h1>{text}</h1>
-    <input value={text} onChange={onChange} />
-  </>
-))
+function MyComponent({ text, onChange }) {
+  return (
+    <>
+      <h1>{text}</h1>
+      <input value={text} onChange={onChange} />
+    </>
+  )
+}
 
-render(MyComponent)
+render(enhance(MyComponent))
