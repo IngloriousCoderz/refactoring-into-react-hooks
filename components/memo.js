@@ -1,3 +1,9 @@
+function useText() {
+  const [text, setText] = useState('Hello world!')
+  const handleChange = event => setText(event.target.value)
+  return { value: text, onChange: handleChange }
+}
+
 function MyComponent() {
   const text = useText()
   return (
@@ -6,12 +12,6 @@ function MyComponent() {
       <input {...text} />
     </>
   )
-}
-
-function useText() {
-  const [text, setText] = useState('Hello world!')
-  const handleChange = event => setText(event.target.value)
-  return { value: text, onChange: handleChange }
 }
 
 render(memo(MyComponent))
