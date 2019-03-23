@@ -33,7 +33,7 @@ function Header() {
         <img
           alt="Creative Commons License"
           style={styles.image}
-          src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png"
+          src="./assets/images/cc_license.png"
         />
       </a>
     </header>

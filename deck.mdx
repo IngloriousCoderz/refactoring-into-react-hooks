@@ -78,7 +78,7 @@ export { default as theme } from './theme'
 
 ---
 
-<LiveCode title="State" code={require('!raw-loader!./components/state')} />
+<LiveCode title="State" code={require('!raw-loader!./live-coding/state')} />
 
 ```notes
 function MyComponent() {
@@ -97,7 +97,7 @@ function MyComponent() {
 
 <LiveCode
   title="useState"
-  code={require('!raw-loader!./components/use-state')}
+  code={require('!raw-loader!./live-coding/use-state')}
 />
 
 ---
@@ -115,7 +115,7 @@ function MyComponent() {
 
 ---
 
-<LiveCode title="Refs" code={require('!raw-loader!./components/refs')} />
+<LiveCode title="Refs" code={require('!raw-loader!./live-coding/refs')} />
 
 ```notes
 function MyComponent() {
@@ -132,7 +132,7 @@ function MyComponent() {
 
 ---
 
-<LiveCode title="useRef" code={require('!raw-loader!./components/use-ref')} />
+<LiveCode title="useRef" code={require('!raw-loader!./live-coding/use-ref')} />
 
 ---
 
@@ -151,7 +151,7 @@ function MyComponent() {
 
 <LiveCode
   title="Lifecycle"
-  code={require('!raw-loader!./components/lifecycle')}
+  code={require('!raw-loader!./live-coding/lifecycle')}
 />
 
 ```notes
@@ -196,7 +196,7 @@ function MyComponent() {
 
 <LiveCode
   title="useEffect"
-  code={require('!raw-loader!./components/use-effect')}
+  code={require('!raw-loader!./live-coding/use-effect')}
 />
 
 ---
@@ -251,7 +251,7 @@ Anyway, since we still hadn't a satisfying reply from the React team, let's find
 
 ---
 
-<LiveCode title="HoCs" code={require('!raw-loader!./components/hocs')} />
+<LiveCode title="HoCs" code={require('!raw-loader!./live-coding/hocs')} />
 
 ```notes
 const MyComponent = memo(function MyComponent() {
@@ -273,7 +273,7 @@ function useText() {
 
 ---
 
-<LiveCode title="memo" code={require('!raw-loader!./components/memo')} />
+<LiveCode title="memo" code={require('!raw-loader!./live-coding/memo')} />
 
 ---
 
@@ -292,7 +292,7 @@ function useText() {
 
 <LiveCode
   title="Render props"
-  code={require('!raw-loader!./components/render-props')}
+  code={require('!raw-loader!./live-coding/render-props')}
 />
 
 ```notes
@@ -316,7 +316,7 @@ function Parent() {
 
 <LiveCode
   title="useCallback"
-  code={require('!raw-loader!./components/use-callback')}
+  code={require('!raw-loader!./live-coding/use-callback')}
 />
 
 ---
@@ -334,7 +334,7 @@ function Parent() {
 
 ---
 
-<LiveCode title="Context" code={require('!raw-loader!./components/context')} />
+<LiveCode title="Context" code={require('!raw-loader!./live-coding/context')} />
 
 ```notes
 function Child() {
@@ -348,7 +348,7 @@ function Child() {
 
 <LiveCode
   title="useContext"
-  code={require('!raw-loader!./components/use-context')}
+  code={require('!raw-loader!./live-coding/use-context')}
 />
 
 ---
@@ -368,7 +368,7 @@ function Child() {
 
 <LiveCode
   title="Reducers"
-  code={require('!raw-loader!./components/reducers')}
+  code={require('!raw-loader!./live-coding/reducers')}
 />
 
 ```notes
@@ -400,7 +400,7 @@ function useCounter() {
 
 <LiveCode
   title="useReducer"
-  code={require('!raw-loader!./components/use-reducer')}
+  code={require('!raw-loader!./live-coding/use-reducer')}
 />
 
 ---
@@ -418,7 +418,7 @@ function useCounter() {
 
 ---
 
-<LiveCode title="Redux" code={require('!raw-loader!./components/redux')} />
+<LiveCode title="Redux" code={require('!raw-loader!./live-coding/redux')} />
 
 ```notes
 function useCounter() {
@@ -445,7 +445,7 @@ function Parent() {
 
 <LiveCode
   title="useReducer + useContext"
-  code={require('!raw-loader!./components/use-reducer-and-context')}
+  code={require('!raw-loader!./live-coding/use-reducer-and-context')}
 />
 
 ---
@@ -465,4 +465,8 @@ function Parent() {
 
 Questions?
 
-[source code](https://github.com/IngloriousCoderz/refactoring-into-react-hooks)
+[html](https://www.ingloriouscoderz.it/refactoring-into-react-hooks)
+|
+[pdf](https://www.ingloriouscoderz.it/refactoring-into-react-hooks/presentation.pdf)
+|
+[source](https://github.com/IngloriousCoderz/refactoring-into-react-hooks)
