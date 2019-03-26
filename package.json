@@ -9,7 +9,7 @@
     "image": "mdx-deck screenshot deck.mdx",
     "help": "mdx-deck",
     "postbuild": "npm run cp:resources",
-    "cp:resources": "cp -r assets .nojekyll 404.html dist",
+    "cp:resources": "cp -r assets .nojekyll 404.html favicon.ico dist",
     "deploy": "git subtree push --prefix dist origin master"
   },
   "keywords": [],
