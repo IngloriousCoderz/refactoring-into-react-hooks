@@ -78,26 +78,16 @@ export { default as theme } from './theme'
 
 ---
 
-<LiveCode title="State" code={require('!raw-loader!./live-coding/state')} />
-
-```notes
-function MyComponent() {
-  const [text, setText] = useState('Hello world!')
-  const handleChange = event => setText(event.target.value)
-  return (
-    <>
-      <h1>{text}</h1>
-      <input value={text} onChange={handleChange} />
-    </>
-  )
-}
-```
+<LiveCode
+  title="State - Before"
+  code={require('!raw-loader!./live-coding/state/before')}
+/>
 
 ---
 
 <LiveCode
-  title="useState"
-  code={require('!raw-loader!./live-coding/use-state')}
+  title="State - After"
+  code={require('!raw-loader!./live-coding/state/after')}
 />
 
 ---
@@ -115,24 +105,17 @@ function MyComponent() {
 
 ---
 
-<LiveCode title="Refs" code={require('!raw-loader!./live-coding/refs')} />
-
-```notes
-function MyComponent() {
-  const myRef = useRef()
-  const handleClick = () => myRef.current.focus()
-  return (
-    <>
-      <input defaultValue="Hello world!" ref={myRef} />
-      <button onClick={handleClick}>Focus!</button>
-    </>
-  )
-}
-```
+<LiveCode
+  title="Refs - Before"
+  code={require('!raw-loader!./live-coding/refs/before')}
+/>
 
 ---
 
-<LiveCode title="useRef" code={require('!raw-loader!./live-coding/use-ref')} />
+<LiveCode
+  title="Refs - After"
+  code={require('!raw-loader!./live-coding/refs/after')}
+/>
 
 ---
 
@@ -150,53 +133,15 @@ function MyComponent() {
 ---
 
 <LiveCode
-  title="Lifecycle"
-  code={require('!raw-loader!./live-coding/lifecycle')}
+  title="Lifecycle - Before"
+  code={require('!raw-loader!./live-coding/lifecycle/before')}
 />
-
-```notes
-function MyComponent() {
-  const [count, setCount] = useState(0)
-  const [play, setPlay] = useState(false)
-
-  function toggle() {
-    setPlay(play => !play)
-  }
-
-  useEffect(() => {
-    let interval = null
-
-    function start() {
-      interval = setInterval(() => setCount(count => count + 1), 1000)
-    }
-
-    function stop() {
-      clearInterval(interval)
-    }
-
-    if (play) {
-      start()
-    } else {
-      stop()
-    }
-
-    return () => stop()
-  }, [play])
-
-  return (
-    <>
-      <h1>{count}</h1>
-      <button onClick={toggle}>{play ? 'Pause' : 'Play'}</button>
-    </>
-  )
-}
-```
 
 ---
 
 <LiveCode
-  title="useEffect"
-  code={require('!raw-loader!./live-coding/use-effect')}
+  title="Lifecycle - After"
+  code={require('!raw-loader!./live-coding/lifecycle/after')}
 />
 
 ---
@@ -251,29 +196,17 @@ Anyway, since we still hadn't a satisfying reply from the React team, let's find
 
 ---
 
-<LiveCode title="HoCs" code={require('!raw-loader!./live-coding/hocs')} />
-
-```notes
-const MyComponent = memo(function MyComponent() {
-  const text = useText()
-  return (
-    <>
-      <h1>{text.value}</h1>
-      <input {...text} />
-    </>
-  )
-})
-
-function useText() {
-  const [text, setText] = useState('Hello world!')
-  const handleChange = event => setText(event.target.value)
-  return { value: text, onChange: handleChange }
-}
-```
+<LiveCode
+  title="HoCs - Before"
+  code={require('!raw-loader!./live-coding/hocs/before')}
+/>
 
 ---
 
-<LiveCode title="memo" code={require('!raw-loader!./live-coding/memo')} />
+<LiveCode
+  title="HOCs - After"
+  code={require('!raw-loader!./live-coding/hocs/after')}
+/>
 
 ---
 
@@ -291,32 +224,15 @@ function useText() {
 ---
 
 <LiveCode
-  title="Render props"
-  code={require('!raw-loader!./live-coding/render-props')}
+  title="Render Props - Before"
+  code={require('!raw-loader!./live-coding/render-props/before')}
 />
-
-```notes
-function useToggle(defaultOn) {
-  const [on, setOn] = useState(defaultOn)
-  const toggle = useCallback(() => setOn(!on), [on])
-  return { on, toggle }
-}
-
-function Child() {
-  const { on, toggle } = useToggle(false)
-  return <button onClick={toggle}>{on ? 'Turn off' : 'Turn on'}</button>
-}
-
-function Parent() {
-  return <Child />
-}
-```
 
 ---
 
 <LiveCode
-  title="useCallback"
-  code={require('!raw-loader!./live-coding/use-callback')}
+  title="Render Props - After"
+  code={require('!raw-loader!./live-coding/render-props/after')}
 />
 
 ---
@@ -334,21 +250,16 @@ function Parent() {
 
 ---
 
-<LiveCode title="Context" code={require('!raw-loader!./live-coding/context')} />
-
-```notes
-function Child() {
-  const user = useContext(UserContext)
-  const theme = useContext(ThemeContext)
-  return <h1 style={theme}>Hello {user}!</h1>
-}
-```
+<LiveCode
+  title="Context - Before"
+  code={require('!raw-loader!./live-coding/context/before')}
+/>
 
 ---
 
 <LiveCode
-  title="useContext"
-  code={require('!raw-loader!./live-coding/use-context')}
+  title="Context  - After"
+  code={require('!raw-loader!./live-coding/context/after')}
 />
 
 ---
@@ -367,40 +278,15 @@ function Child() {
 ---
 
 <LiveCode
-  title="Reducers"
-  code={require('!raw-loader!./live-coding/reducers')}
+  title="Reducers - Before"
+  code={require('!raw-loader!./live-coding/reducers/before')}
 />
-
-```notes
-function Counter() {
-  const { count, increment, decrement, handleChange } = useCounter()
-  return (
-    <>
-      <h1>{count}</h1>
-      <div>
-        <button onClick={decrement}>-1</button>
-        <input type="number" value={count} onChange={handleChange} />
-        <button onClick={increment}>+1</button>
-      </div>
-    </>
-  )
-}
-
-function useCounter() {
-  const [count, dispatch] = useReducer(counter, 0)
-  const increment = () => dispatch({ type: 'INCREMENT' })
-  const decrement = () => dispatch({ type: 'DECREMENT' })
-  const setValue = value => dispatch({ type: 'SET_VALUE', payload: value })
-  const handleChange = event => setValue(parseInt(event.target.value))
-  return { count, increment, decrement, handleChange }
-}
-```
 
 ---
 
 <LiveCode
-  title="useReducer"
-  code={require('!raw-loader!./live-coding/use-reducer')}
+  title="Reducers - After"
+  code={require('!raw-loader!./live-coding/reducers/after')}
 />
 
 ---
@@ -418,34 +304,16 @@ function useCounter() {
 
 ---
 
-<LiveCode title="Redux" code={require('!raw-loader!./live-coding/redux')} />
-
-```notes
-function useCounter() {
-  const [count, dispatch] = useReducer(counter, 0)
-  const increment = () => dispatch({ type: 'INCREMENT' })
-  const decrement = () => dispatch({ type: 'DECREMENT' })
-  const setValue = value => dispatch({ type: 'SET_VALUE', payload: value })
-  const handleChange = event => setValue(parseInt(event.target.value))
-  return { count, increment, decrement, handleChange }
-}
-
-function Parent() {
-  const counter = useCounter()
-
-  return (
-    <CounterContext.Provider value={counter}>
-      <Child />
-    </CounterContext.Provider>
-  )
-}
-```
+<LiveCode
+  title="Redux - Before"
+  code={require('!raw-loader!./live-coding/redux/before')}
+/>
 
 ---
 
 <LiveCode
-  title="useReducer + useContext"
-  code={require('!raw-loader!./live-coding/use-reducer-and-context')}
+  title="Redux - After"
+  code={require('!raw-loader!./live-coding/redux/after')}
 />
 
 ---

@@ -1,16 +1,10 @@
 class MyComponent extends Component {
-  state = { count: 0, play: false }
-
-  start = () => {
-    this.interval = setInterval(
-      () => this.setState(({ count }) => ({ count: count + 1 })),
-      1000,
-    )
-  }
-
-  stop = () => clearInterval(this.interval)
+  state = { play: false, count: 0 }
 
   toggle = () => this.setState(({ play }) => ({ play: !play }))
+  tick = () => this.setState(({ count }) => ({ count: count + 1 }))
+  start = () => (this.interval = setInterval(this.tick, 1000))
+  stop = () => clearInterval(this.interval)
 
   componentDidMount() {
     const { play } = this.state
